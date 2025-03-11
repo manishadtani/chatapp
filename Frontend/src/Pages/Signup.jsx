@@ -2,8 +2,10 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from 'axios'
+import { useAuth } from "../context/AuthProvider";
 
 const Signup = () => {
+  const [authUser, setAuthuser] = useAuth();
   const {
     register,
     handleSubmit,
@@ -12,20 +14,21 @@ const Signup = () => {
   } = useForm();
     const navigate = useNavigate()
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const userInfo = {
         fullname:data.fullname,
         email:data.email,
         password:data.password,
         confirmPassword:data.confirmPassword
     }
-    axios.post("http://localhost:3000/user/createUser", userInfo)
+    await axios.post("http://localhost:3000/user/createUser", userInfo, {withCredentials:true})
     .then((res)=>{
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data){
               alert('Signup Successfully')
             }
             localStorage.setItem("chatty",JSON.stringify(res.data.token))
+            setAuthuser(res.data)
             navigate("/")
     })
     .catch((error) => {

@@ -41,7 +41,7 @@ export const createController = async (req,res)=>{
             const token = jwt.sign({userId:user._id, userEmail:user.email} , process.env.JWT_SECRET)
             res.cookie("jwt",token,{
                 httpOnly:true,
-                secure:true,
+                secure:false,
                 sameSite:"none"
             })
             res.status(200).json({message:"user registered successfully", token:token, user:user})
@@ -51,10 +51,6 @@ export const createController = async (req,res)=>{
                 res.status(501).json({message:"Internal server error"})
         }
 
-      
-
-
-         
 
 }
 

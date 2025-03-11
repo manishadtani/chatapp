@@ -2,23 +2,27 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useAuth } from "../context/AuthProvider";
 
-const Login = () => {
+ 
+const Login =  () => {
+  const [authUser, setAuthuser] = useAuth();
   const navigate = useNavigate()
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit =async (data) => {
     const userInfo = {
       email:data.email,
       password:data.password
     }
 
-    axios.post("http://localhost:3000/user/loginUser", userInfo)
+    await axios.post("http://localhost:3000/user/loginUser", userInfo, {withCredentials:true})
     .then((res)=>{
           console.log(res.data.message)
           if(res.data){
             alert('Login Successfully')
           }
-          localStorage.setItem("chatty",JSON.stringify(res.data.token))
+          localStorage.setItem("chatty",JSON.stringify(res.data))
+          setAuthuser(res.data)
           navigate("/")
     })
     .catch((error)=>{

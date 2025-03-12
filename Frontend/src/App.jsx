@@ -13,15 +13,6 @@ const App = () => {
   return (
     <>
     <AppRoutes />
-
-    {/* <div className="flex h-screen">
-
-    <Left />
-      <Right />
-
-    </div> */}
-        {/* <Signup /> */}
-        {/* <Login /> */}
     </>
   )
 }

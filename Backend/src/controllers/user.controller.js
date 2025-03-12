@@ -39,7 +39,7 @@ export const createController = async (req,res)=>{
             })
 
             const token = jwt.sign({userId:user._id, userEmail:user.email} , process.env.JWT_SECRET)
-            res.cookie("jwt",token,{
+            res.cookie("jwt", token , {
                 httpOnly:true,
                 secure:false,
                 sameSite:"none"
@@ -102,4 +102,17 @@ export const logoutController = async (req,res)=>{
             console.log(error)
             res.status(501).json({message:"Internal server error"})
         }
+}
+
+
+
+export const alluserController = async (req,res)=>{
+    try {
+        const loggedInUser = req.user._id
+        const filteredUsers = await userModel.find({_id: { $ne: loggedInUser}}).select("-password -confirmPassword")
+        console.log(filteredUsers)
+        res.status(201).json(filteredUsers)
+    } catch (error) {
+            console.log(error)
+    }
 }

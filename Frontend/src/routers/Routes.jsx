@@ -15,10 +15,8 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" element={
                     authUser ? (<div className="flex h-screen">
-
                         <Left />
                         <Right />
-
                     </div>) : (
                         <Navigate to={'/login'} />
                     )

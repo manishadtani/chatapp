@@ -18,7 +18,7 @@ const Signup = () => {
     const userInfo = {
         fullname:data.fullname,
         email:data.email,
-        password:data.password,
+        password:data.password, 
         confirmPassword:data.confirmPassword
     }
     await axios.post("http://localhost:3000/user/createUser", userInfo, {withCredentials:true})
@@ -27,7 +27,7 @@ const Signup = () => {
             if(res.data){
               alert('Signup Successfully')
             }
-            localStorage.setItem("chatty",JSON.stringify(res.data.token))
+            localStorage.setItem("chatty",JSON.stringify(res.data))
             setAuthuser(res.data)
             navigate("/")
     })

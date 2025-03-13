@@ -41,8 +41,8 @@ export const createController = async (req,res)=>{
             const token = jwt.sign({userId:user._id, userEmail:user.email} , process.env.JWT_SECRET)
             res.cookie("jwt", token , {
                 httpOnly:true,
-                secure:false,
-                sameSite:"none"
+                secure:true,
+                sameSite:"strict"
             })
             res.status(200).json({message:"user registered successfully", token:token, user:user})
 
@@ -83,7 +83,7 @@ export const loginController = async (req,res)=>{
     res.cookie("jwt",token,{
         httpOnly:true,
         secure:true,
-        sameSite:"none"
+        sameSite:"strict"
     })
     res.status(200).json({message:"User Login Successfully", token:token, user:user})
     } catch (error) {
@@ -103,7 +103,7 @@ export const logoutController = async (req,res)=>{
             res.status(501).json({message:"Internal server error"})
         }
 }
-
+ 
 
 
 export const alluserController = async (req,res)=>{

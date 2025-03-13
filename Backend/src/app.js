@@ -8,8 +8,8 @@ import userRouter from "../src/routers/user.router.js"
 
 
 
-app.use(cookieParser())
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 
 

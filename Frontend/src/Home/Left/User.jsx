@@ -1,6 +1,9 @@
 import React from 'react'
+import useGetAllUser from '../../Pages/useGetAllUser'
 
 const User = () => {
+  const [allUsers, loading] = useGetAllUser()
+  console.log(allUsers)
   return (
     <div className='chat-box flex items-center mt-3 hover:bg-slate-900 duration-150 cursor-pointer'>
 

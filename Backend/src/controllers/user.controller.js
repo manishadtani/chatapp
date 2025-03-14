@@ -6,6 +6,8 @@ export const createController = async (req,res)=>{
         console.log(req.body)
         try {
             
+
+            
             const {fullname, email, password, confirmPassword} = req.body
 
             if(!fullname){

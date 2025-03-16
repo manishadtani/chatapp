@@ -1,9 +1,7 @@
 import React from 'react'
-import useGetAllUser from '../../Pages/useGetAllUser'
 
-const User = () => {
-  const [allUsers, loading] = useGetAllUser()
-  console.log(allUsers)
+const User = ({props}) => {
+  console.log(props)
   return (
     <div className='chat-box flex items-center mt-3 hover:bg-slate-900 duration-150 cursor-pointer'>
 
@@ -13,8 +11,8 @@ const User = () => {
     </div>
 
     <div className='text-sm text-slate-300'>
-      <h3>Manish</h3>
-      <span>manishadtani@gmail.com</span>
+      <h3>{props.fullname}</h3>
+      <span>{props.email}</span>
     </div>
 
 

@@ -17,7 +17,7 @@ const Login =  () => {
 
     await axios.post("http://localhost:3000/user/loginUser", userInfo, {withCredentials:true})
     .then((res)=>{
-          console.log(res.data.message)
+          // console.log(res.data.message)
           if(res.data){
             alert('Login Successfully')
           }

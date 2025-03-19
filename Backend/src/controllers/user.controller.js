@@ -118,7 +118,7 @@ export const logoutController = async (req, res) => {
 
 
 export const alluserController = async (req, res) => {
-    console.log(req.user)
+    // console.log(req.user)
     try {
         const loggedInUser = req.user._id
         const allFilteredUsers = await userModel.find({_id:{$ne: loggedInUser}}).select("-password -confirmPassword")

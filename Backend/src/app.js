@@ -4,8 +4,9 @@ import { configDotenv } from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 configDotenv()
-import userRouter from "../src/routers/user.router.js"
 
+import userRouter from "../src/routers/user.router.js"
+import messageRouter from '../src/routers/message.route.js'
 
 app.use(
     cors({
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.use("/user", userRouter)
+app.use("/message", messageRouter)
 
 
 

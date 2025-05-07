@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-// const api = "https://chatapp-fy96.onrender.com"
 
 function Login() {
   const [authUser, setAuthUser] = useAuth();
@@ -22,7 +21,7 @@ function Login() {
     };
     // console.log(userInfo);
     axios
-      .post("https://chatapp-fy96.onrender.com/user/login", userInfo)
+      .post("https://chatapp-fy96.onrender.com/api/user/login", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Login successful");

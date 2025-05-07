@@ -8,8 +8,9 @@ export default defineConfig({
     port: 3001,
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: process.env.NODE_ENV === "production" ? "https://chatapp-fy96.onrender.com" : "http://localhost:3000", // Use production or local backend URL
         changeOrigin: true,
+        secure: false, // Depending on whether the backend is using HTTPS
       },
     },
   },

@@ -4,6 +4,8 @@ import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+// const api = "https://chatapp-fy96.onrender.com"
+
 function Signup() {
   const [authUser, setAuthUser] = useAuth();
   const {
@@ -31,7 +33,7 @@ function Signup() {
     };
     // console.log(userInfo);
     await axios
-      .post("/api/user/signup", userInfo)
+      .post("https://chatapp-fy96.onrender.com/user/signup", userInfo)
       .then((response) => {
         if (response.data) {
           toast.success("Signup successful");
